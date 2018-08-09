@@ -28,6 +28,8 @@
 	//callbacks -- inserted here --
 	//open apps -- inserted here --
 	var app = qlik.openApp('6aeb4aa7-fb64-48bd-be28-c939cc4f13e3', config);
+	 
+
 
 	//get objects -- inserted here --
 	app.getObject('CurrentSelections','CurrentSelections');
@@ -39,5 +41,13 @@
 	app.getObject('QV02','naeEJf');
 	app.getObject('QV01','jLtqUHA');
 	//create cubes and lists -- inserted here --
-
+	 	var $exportButton = $('<button />');
+  $exportButton.html('Export Data')
+	$exportButton.click(function() {
+		object.then(function(model) {
+			 qlik.table(model).exportData({download: true})
+    })
+  })
+  
+  $exportButton.appendTo('#chartarea')
 } );
