@@ -16,6 +16,20 @@
  	baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources"
  } );
 
+var config = {
+  host: 'branch.qlik.com',
+  isSecure: true,
+  prefix: '/anon/'
+}
+var qBase = 'https://branch.qlik.com/anon/resources';
+
+require.config({
+  paths: {
+    'qlik': 'https://branch.qlik.com/anon/resources/js/qlik'
+  },
+  baseUrl: qBase
+});
+
  require( ["js/qlik"], function ( qlik ) {
  	qlik.setOnError( function ( error ) {
  		$( '#popupText' ).append( error.message + "<br>" );
